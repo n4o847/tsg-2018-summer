@@ -172,7 +172,13 @@ class Lang
       when 0x31
         @stack.push @stack.pop.to_i
       when 0x32
+        x, y = @stack.pop(2)
+        @stack.push x.to_i(y)
+      when 0x33
         @stack.push @stack.pop.to_s
+      when 0x34
+        x, y = @stack.pop(2)
+        @stack.push x.to_i(y)
 
       when 0xa0..0xaf
         idx = ins - 0xa0
