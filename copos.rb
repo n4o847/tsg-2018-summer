@@ -1,0 +1,1 @@
+eval $<.map{|line|line.chomp.size}.pack("U*")
