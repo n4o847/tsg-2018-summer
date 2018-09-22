@@ -142,7 +142,7 @@ class Lang
       when 0x29
         @stack.push @stack.pop.max
       when 0x2a
-        @stack.push @stack.sort
+        @stack.push @stack.pop.sort
 
       when 0x30
         seq = []
