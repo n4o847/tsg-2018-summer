@@ -223,15 +223,9 @@ class Lang
       when 0xca
         @stack.push [@stack[-1].pop]
       when 0xcb
-        arr, x = @stack.pop(2)
-        arr += x
-        @stack.push arr
-      when 0xcc
-        arr, x = @stack.pop(2)
-        arr.push x
-        @stack.push arr
-      when 0xcd
         @stack.push []
+      when 0xcc
+        @stack.push *@stack.pop
 
       when 0xd0..0xda
         @stack.push ins - 0xd0
