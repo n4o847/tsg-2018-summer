@@ -7,8 +7,17 @@ class Lang
     @map = [[]]
 
     code.each_byte {|byte|
-      if byte == 0x80
+      case byte
+      when 0x80
         @map.push []
+      when 0x81
+        @map[-1].push *[0]*2
+      when 0x82
+        @map[-1].push *[0]*4
+      when 0x83
+        @map[-1].push *[0]*8
+      when 0x84
+        @map[-1].push *[0]*16
       else
         @map[-1].push byte
       end
