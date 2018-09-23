@@ -5,3 +5,7 @@ copos は code point sum の略で、文字のコードポイントの分バイ�
 実態はスクリプト言語で eval するだけです。
 
 Ruby 版のみがあります。
+
+## 注意
+
+`getc` などの入力関数が `nil` を返すようです。`STDIN.getc` や `$stdin.getc` と書くと入力をとれます。
