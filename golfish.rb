@@ -53,13 +53,17 @@ class Lang
         # do nothing
 
       when 0x01
-        @stack.push $stdin.getc.ord
+        @stack.push $stdin.getc&.ord || -1
       when 0x02
         input = ""
-        begin
+        loop {
           c = $stdin.getc
-          input << c
-        end while c && c =~ /\s/
+          if c && c =~ /\s/
+            input << c
+          else
+            break
+          end
+        }
         @stack.push input.to_i
       when 0x03
         @stack.push $stdin.each_byte.to_a
@@ -268,7 +272,7 @@ class Lang
         next!
       when 0xed # conditional trampoline
         a = @stack.pop
-        f = true
+        f = a
         if a.is_a?(Array)
           f = a.empty?
         elsif a.is_a?(String)
