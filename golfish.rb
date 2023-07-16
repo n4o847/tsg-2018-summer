@@ -76,7 +76,7 @@ class Lang
           $stdout.print a.pack("C*")
         elsif a.is_a?(String)
           $stdout.print a
-        elsif a.is_a?(Fixnum)
+        elsif a.is_a?(Integer)
           $stdout.print a.chr
         end
       when 0x06
@@ -277,7 +277,7 @@ class Lang
           f = a.empty?
         elsif a.is_a?(String)
           f = a.empty?
-        elsif a.is_a?(Fixnum)
+        elsif a.is_a?(Integer)
           f = a == 0
         end
         next! if f
